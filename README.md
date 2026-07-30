@@ -18,7 +18,10 @@ ecommerce-shipment-analytics-bigquery/
 │   ├── 02_star_schema.sql         -- dimension + fact table build
 │   ├── 03_business_analysis.sql   -- CTEs, window functions, business questions
 │   └── 04_dashboard_view.sql      -- flat view for Tableau/Power BI
-└── docs/
+├── data/
+│   ├── data_dictionary.md         -- column descriptions and known limitations
+│   └── sample_data.csv            -- (optional) 5-10 sample rows for preview
+└── documentation/
     └── executive_eda_report.md
 ```
 
