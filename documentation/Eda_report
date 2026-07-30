@@ -1,0 +1,53 @@
+# Executive EDA Report: E-Commerce Shipment Performance
+
+**Prepared for:** Executive / Operations Leadership
+**Dataset:** 10,999 e-commerce shipments (Kaggle Customer Analytics dataset)
+**Analysis environment:** Google BigQuery
+
+## Executive Summary
+
+This analysis examined 10,999 shipments to identify which operational factors are associated with late delivery, with the goal of directing Operations' attention toward the drivers that actually matter. The data is high quality and analysis-ready. The one finding confirmed so far is that **warehouse location is not a meaningful factor** in delivery performance — all five warehouse blocks perform within a narrow band of each other. This rules out a warehouse-level explanation and points investigation toward other variables. Additional findings (shipment mode, discount level, overall on-time rate) are in progress and will be added as they're completed — this report reflects confirmed results only, not assumptions.
+
+## Data Quality
+
+The dataset was validated before analysis and found to be clean:
+
+- 10,999 rows, no duplicate or missing shipment IDs
+- Zero missing or blank values across all 12 fields
+- All categorical fields consistent (warehouse blocks, shipment modes, product importance tiers, gender)
+- No revenue, profit, or customer-history field exists beyond product cost — this limits the scope of what financial metrics can be reported (e.g. no Customer Lifetime Value or Repeat Customer Rate is calculable from this data)
+
+**Implication:** the data itself is not the obstacle to better delivery performance — whatever is driving late shipments is an operational factor, not a data or measurement problem.
+
+## Key Finding: Warehouse Location Does Not Explain Late Deliveries
+
+| Warehouse Block | On-Time Rate |
+|---|---|
+| B | 60.2% |
+| F | 59.8% |
+| D | 59.8% |
+| C | 59.7% |
+| A | 58.6% |
+
+All five blocks fall within roughly 1.6 percentage points of each other. If warehouse performance were the driver of late shipments, we'd expect a clearer spread — one or two underperforming locations standing out from the rest. That's not what the data shows.
+
+**Recommendation:** Do not prioritize warehouse-specific process audits as a fix for delivery delays. The uniformity across locations suggests the cause is systemic (e.g. tied to shipment mode, order volume, or discount-driven demand) rather than tied to any one facility's operations.
+
+## Open Questions Under Investigation
+
+The following analyses are underway and will be added to this report once complete:
+
+- Overall on-time delivery rate across all shipments
+- Whether shipment mode (Ship / Flight / Road) shows a meaningful performance difference, the way warehouse did not
+- Whether heavily discounted shipments are more likely to arrive late (a possible sign of rushed fulfillment during promotions)
+- Whether customer rating differs meaningfully between on-time and late shipments
+
+## Recommendations (Interim)
+
+1. **Shift investigative focus away from warehouse location** — the data does not support it as a lever for improving on-time performance.
+2. **Prioritize shipment mode and discount-level analysis next** — these are more likely candidates given the flat warehouse result.
+3. **Do not attempt CLV or repeat-customer reporting** from this dataset — the necessary fields don't exist, and any such figure would be fabricated rather than measured.
+
+## Limitations
+
+This report reflects analysis completed to date. It is not a complete root-cause investigation — the flat warehouse result narrows the search but does not yet identify the actual driver of late deliveries. Conclusions below the "Key Finding" section should be treated as preliminary until the remaining analyses are finished.
